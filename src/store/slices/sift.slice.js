@@ -1,12 +1,18 @@
 import produce from 'immer';
 
+const initialState = {
+  search: '',
+  sortBy: 'date_desc',
+  category: 'all',
+  dates: [null, null],
+};
+
 // Action Types
 const SET_SEARCH = 'sift/setSearch';
 const SORT_BY_DATE = 'sift/sortByDate';
 const SORT_BY_AMOUNT = 'sift/sortByAmount';
 const SET_CATEGORY = 'sift/setCategory';
-const SET_START_DATE = 'sift/setStartDate';
-const SET_END_DATE = 'sift/setEndDate';
+const SET_DATES = 'sift/setDates';
 
 // Action Creators
 export const siftActions = {
@@ -26,55 +32,38 @@ export const siftActions = {
     type: SET_CATEGORY,
     payload: category,
   }),
-  setStartDate: (startDate) => ({
-    type: SET_START_DATE,
-    payload: startDate,
-  }),
-  setEndDate: (endDate) => ({
-    type: SET_END_DATE,
-    payload: endDate,
+  setDates: (dates) => ({
+    type: SET_DATES,
+    payload: dates,
   }),
 };
 
 // Reducers
-const siftReducer = produce(
-  (draft, { type, payload }) => {
-    switch (type) {
-      case SET_SEARCH: {
-        draft.search = payload;
-        break;
-      }
-      case SORT_BY_DATE: {
-        draft.sortBy = payload;
-        break;
-      }
-      case SORT_BY_AMOUNT: {
-        draft.sortBy = payload;
-        break;
-      }
-      case SET_CATEGORY: {
-        draft.category = payload;
-        break;
-      }
-      case SET_START_DATE: {
-        draft.startDate = payload;
-        break;
-      }
-      case SET_END_DATE: {
-        draft.endDate = payload;
-        break;
-      }
-      default:
-        break;
+const siftReducer = produce((draft, { type, payload }) => {
+  switch (type) {
+    case SET_SEARCH: {
+      draft.search = payload;
+      break;
     }
-  },
-  {
-    search: '',
-    sortBy: 'date_desc',
-    category: 'all',
-    startDate: null,
-    endDate: null,
-  },
-);
+    case SORT_BY_DATE: {
+      draft.sortBy = payload;
+      break;
+    }
+    case SORT_BY_AMOUNT: {
+      draft.sortBy = payload;
+      break;
+    }
+    case SET_CATEGORY: {
+      draft.category = payload;
+      break;
+    }
+    case SET_DATES: {
+      draft.dates = payload;
+      break;
+    }
+    default:
+      break;
+  }
+}, initialState);
 
 export default siftReducer;
