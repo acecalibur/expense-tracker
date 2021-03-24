@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSift } from '../../../store/selectors.js';
 import { siftActions } from '../../../store/slices/sift.slice.js';
+import classes from './expense-input-filters.module.scss';
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -54,10 +55,11 @@ const ExpenseInputFilters = () => {
               value={search}
               onChange={(e) => dispatch(setSearch(e.target.value))}
               placeholder="Search expenses..."
+              className={classes.inputs}
             />
           </Col>
           <Col xs={24} md={12} xl={6}>
-            <Select defaultValue="date_desc" value={sortBy} onChange={handleSortChange} style={{ width: '100%' }}>
+            <Select defaultValue="date_desc" value={sortBy} onChange={handleSortChange} className={classes.inputs}>
               {sortByOptions.map(({ value, label }) => (
                 <Option key={label} value={value}>
                   {label}
@@ -70,6 +72,7 @@ const ExpenseInputFilters = () => {
               value={dates}
               onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
               format={'MM-DD-YYYY'}
+              className={classes.inputs}
             />
           </Col>
           <Col xs={24} md={12} xl={6}>
@@ -77,7 +80,7 @@ const ExpenseInputFilters = () => {
               defaultValue="all"
               value={category}
               onChange={(val) => dispatch(setCategory(val))}
-              style={{ width: '100%' }}
+              className={classes.inputs}
             >
               {categoryOptions.map(({ value, label }) => (
                 <Option key={label} value={value}>

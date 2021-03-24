@@ -53,3 +53,20 @@ h6 {
   margin: 0 auto;
   padding: 0 1.8rem;
 }
+
+/* Overrides */
+
+.ant-picker-header-next-btn,
+.ant-picker-header-super-next-btn {
+  visibility: visible !important;
+}
+
+.ant-picker-panel:last-child {
+  display: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  .ant-picker-panel-container {
+    width: 100%;
+  }
+}
