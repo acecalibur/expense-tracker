@@ -1,0 +1,24 @@
+@import '../../styles/modules/btn.module.scss';
+
+.box {
+  background-color: #333745;
+  padding: 6rem 0;
+  margin-bottom: 4rem;
+
+  h1 {
+    color: #fff;
+    font-size: 3.2rem;
+    font-weight: 400;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout {
+  @extend .btn-light;
+  font-size: 1.8rem;
+}
