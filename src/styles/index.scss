@@ -54,19 +54,105 @@ h6 {
   padding: 0 1.8rem;
 }
 
-/* Overrides */
-
-.ant-picker-header-next-btn,
-.ant-picker-header-super-next-btn {
-  visibility: visible !important;
+.container-narrow {
+  @extend .container;
+  max-width: 93.6rem;
 }
 
-.ant-picker-panel:last-child {
-  display: none;
+/* Buttons */
+
+.btn {
+  border: none;
+  background-color: #e0e1e2;
+  color: #1b1b1b;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background-color: #cacbcd;
+    color: inherit;
+    border: none;
+  }
 }
 
-@media only screen and (min-width: 1200px) {
-  .ant-picker-panel-container {
-    width: 100%;
+.btn-positive {
+  @extend .btn;
+  background-color: #28a745;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: #218838;
+    color: #fff;
+  }
+}
+
+.btn-negative {
+  @extend .btn;
+  background-color: #dc3545;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: #c82333;
+    color: #fff;
+  }
+}
+
+.btn-info {
+  @extend .btn;
+  background-color: #007bff;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: #0069d9;
+    color: #fff;
+  }
+}
+
+.btn-warning {
+  @extend .btn;
+  background-color: #ff9800;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: #e68a00;
+    color: #fff;
+  }
+}
+
+.btn-light {
+  @extend .btn;
+  color: #1b1b1b;
+  background-color: #f8f9fa;
+
+  &:hover,
+  &:focus {
+    color: #1b1b1b;
+    background-color: #e2e6ea;
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background-color: #343a40;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: #23272b;
+    color: #fff;
+  }
+}
+
+.btn-link {
+  color: #007bff;
+
+  &:hover,
+  &:focus {
+    background-color: #0056b3;
   }
 }

@@ -1,0 +1,26 @@
+.ant-picker-header-next-btn,
+.ant-picker-header-super-next-btn {
+  visibility: visible !important;
+}
+
+.ant-picker-panel:last-child {
+  display: none;
+}
+
+.ant-picker-panel:first-child {
+  display: block;
+}
+
+@media only screen and (min-width: 1200px) {
+  .ant-picker-panel-container {
+    width: 100%;
+  }
+}
+
+.ant-form-item-label {
+  font-weight: 500;
+}
+
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  font-weight: 600;
+}

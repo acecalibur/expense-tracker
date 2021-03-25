@@ -6,6 +6,7 @@ import App from './app.component';
 import reportWebVitals from './reportWebVitals';
 import store from './store/configure-store';
 import './styles/index.scss';
+import './styles/overrides.scss';
 
 const rootEl = document.getElementById('root');
 const jsx = (
