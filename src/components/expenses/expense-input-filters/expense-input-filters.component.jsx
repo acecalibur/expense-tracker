@@ -1,33 +1,14 @@
-import { Col, DatePicker, Input, Row, Select } from 'antd';
+import { Col, Input, Row, Select } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CustomDatePicker from '../../../elements/date-picker.element';
 import { selectSift } from '../../../store/selectors.js';
 import { siftActions } from '../../../store/slices/sift.slice.js';
-import classes from './expense-input-filters.module.scss';
+import { categoryOptions, sortByOptions } from '../../../utils/expenses.utils';
+import styles from './expense-input-filters.module.scss';
 
-const { RangePicker } = DatePicker;
+const { RangePicker } = CustomDatePicker;
 const { Option } = Select;
-
-const sortByOptions = [
-  { value: 'date_desc', label: 'Date: Desc' },
-  { value: 'date_asc', label: 'Date: Asc' },
-  { value: 'amount_desc', label: 'Amount: Desc' },
-  { value: 'amount_asc', label: 'Amount: Asc' },
-];
-
-const categoryOptions = [
-  { value: 'all', label: 'All' },
-  { value: 'housing', label: 'Housing' },
-  { value: 'transportation', label: 'Transportation' },
-  { value: 'food', label: 'Food' },
-  { value: 'utilities', label: 'Utilities' },
-  { value: 'insurance', label: 'Insurance' },
-  { value: 'medical', label: 'Medical' },
-  { value: 'banking', label: 'Banking' },
-  { value: 'personal', label: 'Personal' },
-  { value: 'recreation', label: 'Recreation' },
-  { value: 'miscellaneous', label: 'Miscellaneous' },
-];
 
 const ExpenseInputFilters = () => {
   const { search, sortBy, category, dates } = useSelector(selectSift);
@@ -35,31 +16,33 @@ const ExpenseInputFilters = () => {
   const { setSearch, sortByDate, sortByAmount, setCategory, setDates } = siftActions;
 
   const handleSortChange = (val) => {
-    if (val === 'amount_asc') {
-      dispatch(sortByAmount(val));
-    } else if (val === 'amount_desc') {
-      dispatch(sortByAmount(val));
-    } else if (val === 'date_asc') {
-      dispatch(sortByDate(val));
-    } else {
-      dispatch(sortByDate());
-    }
+    if (val === 'date_desc') dispatch(sortByDate(val));
+    if (val === 'date_asc') dispatch(sortByDate(val));
+    if (val === 'amount_desc') dispatch(sortByAmount(val));
+    if (val === 'amount_asc') dispatch(sortByAmount(val));
   };
 
   return (
-    <section>
+    <section className={styles.box}>
       <div className="container">
         <Row gutter={[16, 16]}>
           <Col xs={24} md={12} xl={6}>
             <Input
+              size="large"
               value={search}
               onChange={(e) => dispatch(setSearch(e.target.value))}
               placeholder="Search expenses..."
-              className={classes.inputs}
+              className={styles.inputs}
             />
           </Col>
           <Col xs={24} md={12} xl={6}>
-            <Select defaultValue="date_desc" value={sortBy} onChange={handleSortChange} className={classes.inputs}>
+            <Select
+              size="large"
+              defaultValue="date_desc"
+              value={sortBy}
+              onChange={handleSortChange}
+              className={styles.inputs}
+            >
               {sortByOptions.map(({ value, label }) => (
                 <Option key={label} value={value}>
                   {label}
@@ -69,18 +52,20 @@ const ExpenseInputFilters = () => {
           </Col>
           <Col xs={24} md={12} xl={6}>
             <RangePicker
+              size="large"
               value={dates}
               onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
               format={'MM-DD-YYYY'}
-              className={classes.inputs}
+              className={styles.inputs}
             />
           </Col>
           <Col xs={24} md={12} xl={6}>
             <Select
+              size="large"
               defaultValue="all"
               value={category}
               onChange={(val) => dispatch(setCategory(val))}
-              className={classes.inputs}
+              className={styles.inputs}
             >
               {categoryOptions.map(({ value, label }) => (
                 <Option key={label} value={value}>
