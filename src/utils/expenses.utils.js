@@ -7,14 +7,14 @@ export const sortByOptions = [
 
 export const categoryOptions = [
   { value: 'all', label: 'All' },
-  { value: 'housing', label: 'Housing' },
-  { value: 'transportation', label: 'Transportation' },
+  { value: 'banking', label: 'Banking' },
   { value: 'food', label: 'Food' },
-  { value: 'utilities', label: 'Utilities' },
+  { value: 'housing', label: 'Housing' },
   { value: 'insurance', label: 'Insurance' },
   { value: 'medical', label: 'Medical' },
-  { value: 'banking', label: 'Banking' },
+  { value: 'miscellaneous', label: 'Miscellaneous' },
   { value: 'personal', label: 'Personal' },
   { value: 'recreation', label: 'Recreation' },
-  { value: 'miscellaneous', label: 'Miscellaneous' },
+  { value: 'transportation', label: 'Transportation' },
+  { value: 'utilities', label: 'Utilities' },
 ];

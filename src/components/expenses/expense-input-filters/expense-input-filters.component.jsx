@@ -51,15 +51,6 @@ const ExpenseInputFilters = () => {
             </Select>
           </Col>
           <Col xs={24} md={12} xl={6}>
-            <RangePicker
-              size="large"
-              value={dates}
-              onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
-              format={'MM-DD-YYYY'}
-              className={styles.inputs}
-            />
-          </Col>
-          <Col xs={24} md={12} xl={6}>
             <Select
               size="large"
               defaultValue="all"
@@ -73,6 +64,15 @@ const ExpenseInputFilters = () => {
                 </Option>
               ))}
             </Select>
+          </Col>
+          <Col xs={24} md={12} xl={6}>
+            <RangePicker
+              size="large"
+              value={dates}
+              onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
+              format={'MM-DD-YYYY'}
+              className={styles.inputs}
+            />
           </Col>
         </Row>
       </div>
