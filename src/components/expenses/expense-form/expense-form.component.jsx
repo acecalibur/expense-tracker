@@ -19,7 +19,7 @@ const ExpenseForm = () => {
   const selectedExpenseIdx = expenses.findIndex((expense) => expense.id === params.id);
   const selectedExpense = expenses[selectedExpenseIdx];
   const dispatch = useDispatch();
-  const { createExpense, updateExpense } = expenseActions;
+  const { createExpense, updateExpense, deleteExpense } = expenseActions;
 
   const initialValues = selectedExpense || null;
 
@@ -67,7 +67,15 @@ const ExpenseForm = () => {
             <div>
               <Space>
                 <Button className="btn">Cancel</Button>
-                <Button className="btn-negative">Delete</Button>
+                <Button
+                  onClick={() => {
+                    dispatch(deleteExpense(selectedExpense.id));
+                    history.push('/dashboard');
+                  }}
+                  className="btn-negative"
+                >
+                  Delete
+                </Button>
               </Space>
             </div>
             <Button htmlType="submit" className="btn-positive">
