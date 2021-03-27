@@ -17,7 +17,7 @@ const App = () => {
             <Header />
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path={['/add-expense', '/edit-expense/:id']} component={AddEditExpense} />
+              <Route exact path={['/add-expense', '/manage-expense/:id']} component={AddEditExpense} />
               <Route path="*" component={NotFound} />
             </Switch>
           </>

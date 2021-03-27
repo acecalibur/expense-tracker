@@ -1,14 +1,17 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ExpenseItem = ({ description, amount, date }) => {
+const ExpenseItem = ({ id, description, amount, date }) => {
   return (
-    <div>
-      <h2>{amount}</h2>
-      <h3>
-        {description}-{format(date, 'MM-dd-yyyy')}
-      </h3>
-    </div>
+    <Link to={`/manage-expense/${id}`}>
+      <div>
+        <h2>{amount}</h2>
+        <h3>
+          {description}-{format(date, 'MM-dd-yyyy')}
+        </h3>
+      </div>
+    </Link>
   );
 };
 

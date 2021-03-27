@@ -1,8 +1,9 @@
 import { Button, Form, Input, InputNumber, Select, Space } from 'antd';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router';
 import CustomDatePicker from '../../../elements/date-picker.element';
+import { selectExpenses } from '../../../store/selectors';
 import { expenseActions } from '../../../store/slices/expense.slice';
 import { categoryOptions } from '../../../utils/expenses.utils';
 import styles from './expense-form.module.scss';
@@ -13,18 +14,24 @@ const { TextArea } = Input;
 
 const ExpenseForm = () => {
   const history = useHistory();
+  const params = useParams();
+  const expenses = useSelector(selectExpenses);
+  const selectedExpenseIdx = expenses.findIndex((expense) => expense.id === params.id);
+  const selectedExpense = expenses[selectedExpenseIdx];
   const dispatch = useDispatch();
-  const { createExpense } = expenseActions;
+  const { createExpense, updateExpense } = expenseActions;
+
+  const initialValues = selectedExpense || null;
 
   const handleSubmit = (values) => {
-    dispatch(createExpense(values));
+    selectedExpense ? dispatch(updateExpense({ ...selectedExpense, ...values })) : dispatch(createExpense(values));
     history.push('/dashboard');
   };
 
   return (
     <div className="container-narrow">
       <div className={styles.box}>
-        <Form onFinish={handleSubmit} layout="vertical">
+        <Form initialValues={initialValues} onFinish={handleSubmit} layout="vertical">
           <FormItem
             label="Description"
             name="description"
