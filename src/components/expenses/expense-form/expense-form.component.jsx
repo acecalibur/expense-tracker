@@ -1,6 +1,9 @@
 import { Button, Form, Input, InputNumber, Select, Space } from 'antd';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import CustomDatePicker from '../../../elements/date-picker.element';
+import { expenseActions } from '../../../store/slices/expense.slice';
 import { categoryOptions } from '../../../utils/expenses.utils';
 import styles from './expense-form.module.scss';
 
@@ -9,8 +12,13 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 const ExpenseForm = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { createExpense } = expenseActions;
+
   const handleSubmit = (values) => {
-    console.log(values);
+    dispatch(createExpense(values));
+    history.push('/dashboard');
   };
 
   return (

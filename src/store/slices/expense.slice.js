@@ -6,18 +6,18 @@ const initialState = {
 };
 
 // Action Types
-const ADD_EXPENSE = 'expense/addExpense';
-const EDIT_EXPENSE = 'expense/editExpense';
+const CREATE_EXPENSE = 'expense/createExpense';
+const UPDATE_EXPENSE = 'expense/updateExpense';
 const DELETE_EXPENSE = 'expense/deleteExpense';
 
 // Action Creators
 export const expenseActions = {
-  addExpense: (expense) => ({
-    type: ADD_EXPENSE,
+  createExpense: (expense) => ({
+    type: CREATE_EXPENSE,
     payload: expense,
   }),
-  editExpense: (expense) => ({
-    type: EDIT_EXPENSE,
+  updateExpense: (expense) => ({
+    type: UPDATE_EXPENSE,
     payload: expense,
   }),
   deleteExpense: (expenseId) => ({
@@ -29,11 +29,11 @@ export const expenseActions = {
 // Reducers
 const expenseReducer = produce((draft, { type, payload }) => {
   switch (type) {
-    case ADD_EXPENSE: {
+    case CREATE_EXPENSE: {
       draft.expenses.push(payload);
       break;
     }
-    case EDIT_EXPENSE: {
+    case UPDATE_EXPENSE: {
       const i = draft.expenses.findIndex((expense) => expense.id === payload.id);
       if (i !== -1) draft.expenses[i] = payload;
       break;
