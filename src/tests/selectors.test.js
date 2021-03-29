@@ -1,8 +1,8 @@
 import { sub } from 'date-fns';
 import { getVisibleExpenses } from '../store/selectors';
-import { expenses } from './fixtures/mock-data';
+import { expenses } from './fixtures/test-data';
 
-test('should sift through expenses based on the search value', () => {
+test('should sift through expenses.list based on the search value', () => {
   const sift = {
     search: 't',
     sortBy: 'date_desc',
@@ -10,11 +10,11 @@ test('should sift through expenses based on the search value', () => {
     dates: [null, null],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[1], expenses[0]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[1], expenses.list[0]]);
 });
 
-test('should sift through expenses based on sort by date in descending order', () => {
+test('should sift through expenses.list based on sort by date in descending order', () => {
   const sift = {
     search: '',
     sortBy: 'date_desc',
@@ -22,11 +22,11 @@ test('should sift through expenses based on sort by date in descending order', (
     dates: [null, null],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[1], expenses[0], expenses[2]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[1], expenses.list[0], expenses.list[2]]);
 });
 
-test('should sift through expenses based on sort by date in ascending order', () => {
+test('should sift through expenses.list based on sort by date in ascending order', () => {
   const sift = {
     search: '',
     sortBy: 'date_asc',
@@ -34,11 +34,11 @@ test('should sift through expenses based on sort by date in ascending order', ()
     dates: [null, null],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[2], expenses[0], expenses[1]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[2], expenses.list[0], expenses.list[1]]);
 });
 
-test('should sift through expenses based on sort by amount in descending order', () => {
+test('should sift through expenses.list based on sort by amount in descending order', () => {
   const sift = {
     search: '',
     sortBy: 'amount_desc',
@@ -46,11 +46,11 @@ test('should sift through expenses based on sort by amount in descending order',
     dates: [null, null],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[0], expenses[2], expenses[1]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[0], expenses.list[2], expenses.list[1]]);
 });
 
-test('should sift through expenses based on sort by amount in ascending order', () => {
+test('should sift through expenses.list based on sort by amount in ascending order', () => {
   const sift = {
     search: '',
     sortBy: 'amount_asc',
@@ -58,11 +58,11 @@ test('should sift through expenses based on sort by amount in ascending order', 
     dates: [null, null],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[1], expenses[2], expenses[0]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[1], expenses.list[2], expenses.list[0]]);
 });
 
-test('should sift through expenses based on the category', () => {
+test('should sift through expenses.list based on the category', () => {
   const sift = {
     search: '',
     sortBy: 'date_desc',
@@ -70,11 +70,11 @@ test('should sift through expenses based on the category', () => {
     dates: [null, null],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[1]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[1]]);
 });
 
-test('should sift through expenses based on the dates', () => {
+test('should sift through expenses.list based on the dates', () => {
   const sift = {
     search: '',
     sortBy: 'date_desc',
@@ -82,6 +82,6 @@ test('should sift through expenses based on the dates', () => {
     dates: [sub(new Date(), { days: 7 }), new Date()],
   };
 
-  const selectedData = getVisibleExpenses.resultFunc(expenses, sift);
-  expect(selectedData).toEqual([expenses[0], expenses[2]]);
+  const selectedData = getVisibleExpenses.resultFunc(expenses.list, sift);
+  expect(selectedData).toEqual([expenses.list[0], expenses.list[2]]);
 });
