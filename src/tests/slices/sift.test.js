@@ -1,4 +1,4 @@
-import { siftActions } from '../store/slices/sift.slice';
+import { siftActions } from '../../store/slices/sift.slice';
 
 // Action Creators
 

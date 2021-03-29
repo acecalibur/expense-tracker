@@ -15,15 +15,11 @@ export const getVisibleExpenses = createSelector(
         return searchMatch && categoryMatch && startDateMatch && endDateMatch;
       })
       .sort((a, b) => {
-        if (sortBy === 'amount_asc') {
-          return a.amount - b.amount;
-        } else if (sortBy === 'amount_desc') {
-          return b.amount - a.amount;
-        } else if (sortBy === 'date_asc') {
-          return a.date - b.date;
-        } else {
-          return b.date - a.date;
-        }
+        if (sortBy === 'date_desc') return b.date - a.date;
+        if (sortBy === 'date_asc') return a.date - b.date;
+        if (sortBy === 'amount_desc') return b.amount - a.amount;
+        if (sortBy === 'amount_asc') return a.amount - b.amount;
+        return 0;
       });
   },
 );

@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import { expenseActions } from '../store/slices/expense.slice';
+import { expenseActions } from '../../store/slices/expense.slice';
 
 // Action Creators
 
