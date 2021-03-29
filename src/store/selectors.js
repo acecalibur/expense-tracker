@@ -1,6 +1,6 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectExpenses = (state) => state.expense.expenses;
+export const selectExpenses = (state) => state.expenses.list;
 export const selectSift = (state) => state.sift;
 
 export const getVisibleExpenses = createSelector(

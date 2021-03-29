@@ -1,9 +1,14 @@
-import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './root-reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import expensesReducer from './slices/expenses.slice';
+import siftReducer from './slices/sift.slice';
 
-const middleware = [];
+const rootReducer = {
+  expenses: expensesReducer,
+  sift: siftReducer,
+};
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;
