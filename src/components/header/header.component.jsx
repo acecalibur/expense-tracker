@@ -1,4 +1,5 @@
 import { Button } from 'antd';
+import cn from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
@@ -11,7 +12,7 @@ const Header = () => {
           <Link to="/dashboard">
             <h1>Expense Tracker</h1>
           </Link>
-          <Button size="large" onClick={() => console.log('Logging out')} className="btn-light">
+          <Button onClick={() => console.log('Logging out')} className={cn('btn-light', styles.logout)}>
             Logout
           </Button>
         </div>
