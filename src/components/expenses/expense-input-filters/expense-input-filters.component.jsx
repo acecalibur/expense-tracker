@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomDatePicker from '../../../elements/date-picker.element';
 import { selectSift } from '../../../store/selectors.js';
-import { siftActions } from '../../../store/slices/sift.slice.js';
-import { categoryOptions, sortByOptions } from '../../../utils/expenses.utils';
+import { setCategory, setDates, setSearch, sortByAmount, sortByDate } from '../../../store/slices/sift.slice.js';
+import { categoryOptions, sortByOptions } from '../../../utils/expenses.utils.js';
 import styles from './expense-input-filters.module.scss';
 
 const { RangePicker } = CustomDatePicker;
@@ -13,7 +13,6 @@ const { Option } = Select;
 const ExpenseInputFilters = () => {
   const { search, sortBy, category, dates } = useSelector(selectSift);
   const dispatch = useDispatch();
-  const { setSearch, sortByDate, sortByAmount, setCategory, setDates } = siftActions;
 
   const handleSortChange = (val) => {
     if (val === 'date_desc') dispatch(sortByDate(val));

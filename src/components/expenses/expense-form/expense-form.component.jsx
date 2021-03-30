@@ -9,9 +9,9 @@ import {
   FormTextArea,
   FormTextField,
 } from '../../../elements/form-inputs.element';
-import { selectExpenses } from '../../../store/selectors';
-import { expenseActions } from '../../../store/slices/expense.slice';
-import { categoryOptions } from '../../../utils/expenses.utils';
+import { selectExpenses } from '../../../store/selectors.js';
+import { createExpense, deleteExpense, updateExpense } from '../../../store/slices/expenses.slice.js';
+import { categoryOptions } from '../../../utils/expenses.utils.js';
 import styles from './expense-form.module.scss';
 
 const ExpenseForm = () => {
@@ -21,14 +21,18 @@ const ExpenseForm = () => {
   const selectedExpenseIdx = expenses.findIndex((expense) => expense.id === params.id);
   const selectedExpense = expenses[selectedExpenseIdx];
   const dispatch = useDispatch();
-  const { createExpense, updateExpense, deleteExpense } = expenseActions;
 
   const initialValues = selectedExpense || null;
 
   const handleSubmit = (values) => {
-    // selectedExpense ? dispatch(updateExpense({ ...selectedExpense, ...values })) : dispatch(createExpense(values));
-    // history.push('/dashboard');
+    selectedExpense ? dispatch(updateExpense({ ...selectedExpense, ...values })) : dispatch(createExpense(values));
+    history.push('/dashboard');
     console.log(values);
+  };
+
+  const handleDeleteExpense = () => {
+    dispatch(deleteExpense(selectedExpense.id));
+    history.push('/dashboard');
   };
 
   return (
@@ -86,13 +90,7 @@ const ExpenseForm = () => {
             <div>
               <Space>
                 <Button className="btn">Cancel</Button>
-                <Button
-                  onClick={() => {
-                    dispatch(deleteExpense(selectedExpense.id));
-                    history.push('/dashboard');
-                  }}
-                  className="btn-negative"
-                >
+                <Button onClick={handleDeleteExpense} className="btn-negative">
                   Delete
                 </Button>
               </Space>
