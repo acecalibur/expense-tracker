@@ -1,0 +1,30 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.textContent {
+  display: flex;
+  align-items: center;
+
+  strong {
+    border-right: 2px solid #333;
+    padding-right: 1rem;
+    font-size: 3.2rem;
+    font-weight: 600;
+  }
+
+  span {
+    margin-left: 1rem;
+    font-size: 2.4rem;
+    font-weight: 400;
+  }
+}
+
+.notFound {
+  margin-top: 1rem;
+  padding: 1.2rem 2.4rem;
+}
