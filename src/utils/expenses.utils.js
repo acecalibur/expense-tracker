@@ -18,3 +18,8 @@ export const categoryOptions = [
   { value: 'transportation', label: 'Transportation' },
   { value: 'utilities', label: 'Utilities' },
 ];
+
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});

@@ -1,0 +1,29 @@
+.box {
+  margin: 2rem 0;
+}
+
+.headings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #eee;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  padding: 2rem;
+  background-color: #f8f8f8;
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+}
+
+.noExpenses {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  border: 2px solid #eee;
+  border-top: none;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+}

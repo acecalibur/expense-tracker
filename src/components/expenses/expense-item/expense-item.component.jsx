@@ -2,17 +2,24 @@ import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatter } from '../../../utils/expenses.utils.js';
+import styles from './expense-item.module.scss';
 
 const ExpenseItem = ({ id, description, amount, date }) => {
   return (
-    <Link to={`/manage-expense/${id}`}>
-      <div>
-        <h2>{amount}</h2>
-        <h3>
-          {description}-{format(date, 'MM-dd-yyyy')}
-        </h3>
-      </div>
-    </Link>
+    <div className={styles.box}>
+      <Link to={`/manage-expense/${id}`}>
+        <div className={styles.flex}>
+          <div>
+            <h4>{description}</h4>
+            <span>{format(date, 'MMMM d, yyyy')}</span>
+          </div>
+          <div>
+            <h4>{formatter.format(amount)}</h4>
+          </div>
+        </div>
+      </Link>
+    </div>
   );
 };
 
