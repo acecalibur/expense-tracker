@@ -16,7 +16,7 @@ export const FormTextField = ({ field, ...props }) => {
 export const FormNumberField = ({ field, ...props }) => {
   return (
     <FormItem {...field}>
-      <InputNumber {...props} style={{ width: '100%' }} />
+      <InputNumber {...props} />
     </FormItem>
   );
 };
@@ -38,7 +38,7 @@ export const FormSelect = ({ field, options, ...props }) => {
 export const FormDatePicker = ({ field, ...props }) => {
   return (
     <FormItem {...field}>
-      <CustomDatePicker {...props} style={{ width: '100%' }} />
+      <CustomDatePicker {...props} />
     </FormItem>
   );
 };
