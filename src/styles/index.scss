@@ -78,7 +78,7 @@ h6 {
   &:hover,
   &:focus {
     background-color: #cacbcd;
-    color: inherit;
+    color: #1b1b1b;
     border: none;
     box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   }
@@ -134,12 +134,10 @@ h6 {
 
 .btn-light {
   @extend .btn;
-  color: #1b1b1b;
   background-color: #f8f9fa;
 
   &:hover,
   &:focus {
-    color: #1b1b1b;
     background-color: #e2e6ea;
   }
 }
