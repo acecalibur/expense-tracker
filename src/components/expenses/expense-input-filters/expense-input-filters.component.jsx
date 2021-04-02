@@ -23,58 +23,56 @@ const ExpenseInputFilters = () => {
 
   return (
     <section className={styles.box}>
-      <div className="container">
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12} xl={6}>
-            <Input
-              size="large"
-              value={search}
-              onChange={(e) => dispatch(setSearch(e.target.value))}
-              placeholder="Search expenses..."
-              className={styles.inputs}
-            />
-          </Col>
-          <Col xs={24} md={12} xl={6}>
-            <Select
-              size="large"
-              defaultValue="date_desc"
-              value={sortBy}
-              onChange={handleSortChange}
-              className={styles.inputs}
-            >
-              {sortByOptions.map(({ value, label }) => (
-                <Option key={label} value={value}>
-                  {label}
-                </Option>
-              ))}
-            </Select>
-          </Col>
-          <Col xs={24} md={12} xl={6}>
-            <Select
-              size="large"
-              defaultValue="all"
-              value={category}
-              onChange={(val) => dispatch(setCategory(val))}
-              className={styles.inputs}
-            >
-              {categoryOptions.map(({ value, label }) => (
-                <Option key={label} value={value}>
-                  {label}
-                </Option>
-              ))}
-            </Select>
-          </Col>
-          <Col xs={24} md={12} xl={6}>
-            <RangePicker
-              size="large"
-              value={dates}
-              onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
-              format={'MM-DD-YYYY'}
-              className={styles.inputs}
-            />
-          </Col>
-        </Row>
-      </div>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} md={12} xl={6}>
+          <Input
+            size="large"
+            value={search}
+            onChange={(e) => dispatch(setSearch(e.target.value))}
+            placeholder="Search expenses..."
+            className={styles.inputs}
+          />
+        </Col>
+        <Col xs={24} md={12} xl={6}>
+          <Select
+            size="large"
+            defaultValue="date_desc"
+            value={sortBy}
+            onChange={handleSortChange}
+            className={styles.inputs}
+          >
+            {sortByOptions.map(({ value, label }) => (
+              <Option key={label} value={value}>
+                {label}
+              </Option>
+            ))}
+          </Select>
+        </Col>
+        <Col xs={24} md={12} xl={6}>
+          <Select
+            size="large"
+            defaultValue="all"
+            value={category}
+            onChange={(val) => dispatch(setCategory(val))}
+            className={styles.inputs}
+          >
+            {categoryOptions.map(({ value, label }) => (
+              <Option key={label} value={value}>
+                {label}
+              </Option>
+            ))}
+          </Select>
+        </Col>
+        <Col xs={24} md={12} xl={6}>
+          <RangePicker
+            size="large"
+            value={dates}
+            onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
+            format={'MM-DD-YYYY'}
+            className={styles.inputs}
+          />
+        </Col>
+      </Row>
     </section>
   );
 };

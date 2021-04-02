@@ -5,7 +5,7 @@ import styles from './expense-list.module.scss';
 
 const ExpenseList = ({ expenses }) => {
   return (
-    <div className={styles.box}>
+    <section>
       <div className={styles.headings}>
         <h3>Description</h3>
         <h3>Amount</h3>
@@ -17,7 +17,7 @@ const ExpenseList = ({ expenses }) => {
       ) : (
         expenses.map((expense) => <ExpenseItem key={expense.id} {...expense} />)
       )}
-    </div>
+    </section>
   );
 };
 

@@ -89,10 +89,14 @@ const ExpenseForm = () => {
           <div className={styles.btnGroup}>
             <div>
               <Space>
-                <Button className="btn">Cancel</Button>
-                <Button onClick={handleDeleteExpense} className="btn-negative">
-                  Delete
+                <Button onClick={() => history.push('/dashboard')} className="btn">
+                  Cancel
                 </Button>
+                {selectedExpense && (
+                  <Button onClick={handleDeleteExpense} className="btn-negative">
+                    Delete
+                  </Button>
+                )}
               </Space>
             </div>
             <Button htmlType="submit" className="btn-positive">
