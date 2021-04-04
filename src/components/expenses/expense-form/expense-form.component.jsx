@@ -10,7 +10,7 @@ import {
   FormTextField,
 } from '../../../elements/form-inputs.element';
 import { selectExpenses } from '../../../store/selectors.js';
-import { createExpense, deleteExpense, updateExpense } from '../../../store/slices/expenses.slice.js';
+import { startCreateExpense, startDeleteExpense, startUpdateExpense } from '../../../store/slices/expenses.slice.js';
 import { categoryOptions } from '../../../utils/expenses.utils.js';
 import styles from './expense-form.module.scss';
 
@@ -22,16 +22,23 @@ const ExpenseForm = () => {
   const selectedExpense = expenses[selectedExpenseIdx];
   const dispatch = useDispatch();
 
-  const initialValues = selectedExpense || null;
+  const initialValues = selectedExpense || {
+    description: '',
+    amount: '',
+    category: '',
+    date: '',
+    note: '',
+  };
 
   const handleSubmit = (values) => {
-    selectedExpense ? dispatch(updateExpense({ ...selectedExpense, ...values })) : dispatch(createExpense(values));
+    selectedExpense
+      ? dispatch(startUpdateExpense({ ...selectedExpense, ...values }))
+      : dispatch(startCreateExpense(values));
     history.push('/dashboard');
-    console.log(values);
   };
 
   const handleDeleteExpense = () => {
-    dispatch(deleteExpense(selectedExpense.id));
+    dispatch(startDeleteExpense(selectedExpense.id));
     history.push('/dashboard');
   };
 
