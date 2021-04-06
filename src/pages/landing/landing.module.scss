@@ -24,18 +24,10 @@
   .auth {
     padding: 1rem 2rem;
     width: 40%;
-    background-color: #665df5;
-    color: #fff;
     font-size: 2rem;
 
     &:first-child {
       margin-right: 1.5rem;
-    }
-
-    &:hover,
-    &:focus {
-      background-color: #544af4;
-      color: #fff;
     }
   }
 }
