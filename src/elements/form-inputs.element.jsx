@@ -3,12 +3,20 @@ import CustomDatePicker from './date-picker.element';
 
 const { Item: FormItem } = Form;
 const { Option } = Select;
-const { TextArea } = Input;
+const { TextArea, Password } = Input;
 
 export const FormTextField = ({ field, ...props }) => {
   return (
     <FormItem {...field}>
       <Input {...props} />
+    </FormItem>
+  );
+};
+
+export const FormPasswordField = ({ field, ...props }) => {
+  return (
+    <FormItem {...field}>
+      <Password {...props} />
     </FormItem>
   );
 };
