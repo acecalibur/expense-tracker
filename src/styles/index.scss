@@ -84,6 +84,18 @@ h6 {
   }
 }
 
+.btn-primary {
+  @extend .btn;
+  background-color: #665df5;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background-color: #544af4;
+    color: #fff;
+  }
+}
+
 .btn-positive {
   @extend .btn;
   background-color: #28a745;
