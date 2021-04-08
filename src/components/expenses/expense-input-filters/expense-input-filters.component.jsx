@@ -30,17 +30,10 @@ const ExpenseInputFilters = () => {
             value={search}
             onChange={(e) => dispatch(setSearch(e.target.value))}
             placeholder="Search expenses..."
-            className={styles.inputs}
           />
         </Col>
         <Col xs={24} md={12} xl={6}>
-          <Select
-            size="large"
-            defaultValue="date_desc"
-            value={sortBy}
-            onChange={handleSortChange}
-            className={styles.inputs}
-          >
+          <Select size="large" defaultValue="date_desc" value={sortBy} onChange={handleSortChange}>
             {sortByOptions.map(({ value, label }) => (
               <Option key={label} value={value}>
                 {label}
@@ -49,13 +42,7 @@ const ExpenseInputFilters = () => {
           </Select>
         </Col>
         <Col xs={24} md={12} xl={6}>
-          <Select
-            size="large"
-            defaultValue="all"
-            value={category}
-            onChange={(val) => dispatch(setCategory(val))}
-            className={styles.inputs}
-          >
+          <Select size="large" defaultValue="all" value={category} onChange={(val) => dispatch(setCategory(val))}>
             {categoryOptions.map(({ value, label }) => (
               <Option key={label} value={value}>
                 {label}
@@ -69,7 +56,6 @@ const ExpenseInputFilters = () => {
             value={dates}
             onChange={(dates) => (dates === null ? dispatch(setDates([null, null])) : dispatch(setDates(dates)))}
             format={'MM-DD-YYYY'}
-            className={styles.inputs}
           />
         </Col>
       </Row>

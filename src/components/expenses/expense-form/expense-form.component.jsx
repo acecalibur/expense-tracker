@@ -25,7 +25,7 @@ const ExpenseForm = () => {
   const initialValues = selectedExpense || {
     description: '',
     amount: '',
-    category: '',
+    category: null,
     date: '',
     note: '',
   };
@@ -52,6 +52,7 @@ const ExpenseForm = () => {
               name: 'description',
               rules: [{ required: true, message: 'Please provide a description.' }],
             }}
+            size="large"
             placeholder="Lunch"
           />
           <FormNumberField
@@ -60,6 +61,7 @@ const ExpenseForm = () => {
               name: 'amount',
               rules: [{ required: true, message: 'Please provide an amount.' }],
             }}
+            size="large"
             formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
             precision={2}
@@ -71,6 +73,7 @@ const ExpenseForm = () => {
               name: 'category',
               rules: [{ required: true, message: 'Please select a category.' }],
             }}
+            size="large"
             allowClear
             showSearch
             options={categoryOptions.slice(1)}
@@ -82,6 +85,7 @@ const ExpenseForm = () => {
               name: 'date',
               rules: [{ required: true, message: 'Please pick a date.' }],
             }}
+            size="large"
             format="MM-DD-YYYY"
             placeholder="03-22-2021"
           />
@@ -90,6 +94,7 @@ const ExpenseForm = () => {
               label: 'Note',
               name: 'note',
             }}
+            size="large"
             rows="3"
             placeholder="Chipotle (This field is optional...)"
           />
