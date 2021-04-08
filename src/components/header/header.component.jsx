@@ -2,9 +2,14 @@ import { Button } from 'antd';
 import cn from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../configs/firebase.config.js';
 import styles from './header.module.scss';
 
 const Header = () => {
+  const handleSignOut = async () => {
+    await auth.signOut();
+  };
+
   return (
     <header className={styles.box}>
       <div className="container">
@@ -12,7 +17,7 @@ const Header = () => {
           <Link to="/dashboard">
             <h1>Expense Tracker</h1>
           </Link>
-          <Button onClick={() => console.log('Logging out')} className={cn('btn-light', styles.logout)}>
+          <Button onClick={handleSignOut} className={cn('btn-light', styles.logout)}>
             Logout
           </Button>
         </div>
