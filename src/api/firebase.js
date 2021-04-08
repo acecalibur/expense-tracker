@@ -19,25 +19,24 @@ const dataFromSnapshot = (snapshot) => {
   };
 };
 
-export const fetchExpensesFs = async () => {
-  const qs = await db.collection('expenses').get();
+export const fetchExpensesFs = async (uid) => {
+  const qs = await db.collection(`users/${uid}/expenses`).get();
   const expenses = qs.docs.map((docSnapshot) => dataFromSnapshot(docSnapshot));
   return expenses;
 };
 
-export const createExpenseFs = async (expense) => {
-  const docRef = await db.collection('expenses').add(expense);
+export const createExpenseFs = async (uid, expense) => {
+  const docRef = await db.collection(`users/${uid}/expenses`).add(expense);
   return docRef;
 };
 
-export const updateExpenseFs = async (updatedExpense) => {
-  console.log(updatedExpense);
-  await db.doc(`expenses/${updatedExpense.id}`).update({
+export const updateExpenseFs = async (uid, updatedExpense) => {
+  await db.doc(`users/${uid}/expenses/${updatedExpense.id}`).update({
     ...updatedExpense,
     id: firebase.firestore.FieldValue.delete(),
   });
 };
 
-export const deleteExpenseFs = async (expenseId) => {
-  await db.doc(`expenses/${expenseId}`).delete();
+export const deleteExpenseFs = async (uid, expenseId) => {
+  await db.doc(`users/${uid}/expenses/${expenseId}`).delete();
 };

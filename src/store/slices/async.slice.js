@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isLoading: false,
   error: null,
+  isInitialized: false,
   isIdle: true,
 };
 
@@ -20,6 +21,9 @@ const asyncSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    appReady: (state) => {
+      state.isInitialized = true;
+    },
     appActive: (state) => {
       state.isIdle = false;
     },
@@ -29,6 +33,6 @@ const asyncSlice = createSlice({
   },
 });
 
-export const { fetchStarted, fetchCompleted, fetchFailed, appActive, appInactive } = asyncSlice.actions;
+export const { fetchStarted, fetchCompleted, fetchFailed, appReady, appActive, appInactive } = asyncSlice.actions;
 export const asyncSelector = (state) => state.async;
 export default asyncSlice.reducer;

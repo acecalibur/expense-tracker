@@ -1,16 +1,19 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import { createExpenseFs, deleteExpenseFs, fetchExpensesFs, updateExpenseFs } from '../api/firebase';
-import { appReady, fetchCompleted, fetchFailed, fetchStarted } from './slices/async.slice';
+import { appActive, appReady, fetchCompleted, fetchFailed, fetchStarted } from './slices/async.slice';
 import * as actions from './slices/expenses.slice';
+import { userSelector } from './slices/user.slice';
 
 // Workers
 
 function* handleStartSetExpenses() {
   try {
     yield put(fetchStarted());
-    const expenses = yield call(fetchExpensesFs);
+    const { uid } = yield select(userSelector);
+    const expenses = yield call(fetchExpensesFs, uid);
     yield put(fetchCompleted());
     yield put(actions.setExpenses(expenses));
+    yield put(appActive());
     yield put(appReady());
   } catch (error) {
     yield put(fetchFailed(error));
@@ -19,7 +22,8 @@ function* handleStartSetExpenses() {
 
 function* handleStartCreateExpense(action) {
   try {
-    const docRef = yield call(createExpenseFs, action.payload);
+    const { uid } = yield select(userSelector);
+    const docRef = yield call(createExpenseFs, uid, action.payload);
     yield put(actions.createExpense({ id: docRef.id, ...action.payload }));
   } catch (error) {
     throw new Error(error);
@@ -28,7 +32,8 @@ function* handleStartCreateExpense(action) {
 
 function* handleStartUpdateExpense(action) {
   try {
-    yield call(updateExpenseFs, action.payload);
+    const { uid } = yield select(userSelector);
+    yield call(updateExpenseFs, uid, action.payload);
     yield put(actions.updateExpense(action.payload));
   } catch (error) {
     throw new Error(error);
@@ -37,7 +42,8 @@ function* handleStartUpdateExpense(action) {
 
 function* handleStartDeleteExpense(action) {
   try {
-    yield call(deleteExpenseFs, action.payload);
+    const { uid } = yield select(userSelector);
+    yield call(deleteExpenseFs, uid, action.payload);
     yield put(actions.deleteExpense(action.payload));
   } catch (error) {
     throw new Error(error);
