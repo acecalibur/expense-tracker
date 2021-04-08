@@ -5,12 +5,12 @@ import { closeModal, modalSelector } from '../../../store/slices/modal.slice.js'
 
 const ModalWrapper = ({ children, title, footer }) => {
   const dispatch = useDispatch();
-  const { modalVisibility } = useSelector(modalSelector);
+  const { isVisible } = useSelector(modalSelector);
 
   return (
     <Modal
       title={title}
-      visible={modalVisibility}
+      visible={isVisible}
       onCancel={() => dispatch(closeModal())}
       footer={footer}
       width={450}

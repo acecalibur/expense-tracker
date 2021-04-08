@@ -10,10 +10,10 @@ const ModalManager = () => {
     SignInForm,
   };
 
-  const { modalType, modalProps, modalVisibility } = useSelector(modalSelector);
+  const { modalType, modalProps, isVisible } = useSelector(modalSelector);
   let renderedModal;
 
-  if (modalVisibility) {
+  if (isVisible) {
     const ModalComponent = modals[modalType];
     renderedModal = <ModalComponent {...modalProps} />;
   }
