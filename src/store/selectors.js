@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 export const selectExpenses = (state) => state.expenses.list;
 export const selectSift = (state) => state.sift;
 
-export const getVisibleExpenses = createSelector(
+export const selectVisibleExpenses = createSelector(
   [selectExpenses, selectSift],
   (expenses, { search, sortBy, category, dates }) => {
     return expenses
