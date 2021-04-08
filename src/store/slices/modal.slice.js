@@ -5,18 +5,18 @@ const modalSlice = createSlice({
   initialState: {
     modalType: null,
     modalProps: {},
-    modalVisibility: false,
+    isVisible: false,
   },
   reducers: {
     openModal(draft, action) {
       draft.modalType = action.payload.modalType;
       draft.modalProps = action.payload.modalProps;
-      draft.modalVisibility = true;
+      draft.isVisible = true;
     },
     closeModal(draft, action) {
       draft.modalType = action.payload;
       draft.modalProps = {};
-      draft.modalVisibility = false;
+      draft.isVisible = false;
     },
   },
 });

@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   error: null,
-  initialized: false,
+  isIdle: true,
 };
 
 const asyncSlice = createSlice({
@@ -11,21 +11,24 @@ const asyncSlice = createSlice({
   initialState,
   reducers: {
     fetchStarted: (state) => {
-      state.loading = true;
+      state.isLoading = true;
     },
     fetchCompleted: (state) => {
-      state.loading = false;
+      state.isLoading = false;
     },
     fetchFailed: (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.isLoading = false;
     },
-    appReady: (state) => {
-      state.initialized = true;
+    appActive: (state) => {
+      state.isIdle = false;
+    },
+    appInactive: (state) => {
+      state.isIdle = true;
     },
   },
 });
 
-export const { fetchStarted, fetchCompleted, fetchFailed, appReady } = asyncSlice.actions;
+export const { fetchStarted, fetchCompleted, fetchFailed, appActive, appInactive } = asyncSlice.actions;
 export const asyncSelector = (state) => state.async;
 export default asyncSlice.reducer;
