@@ -5,6 +5,7 @@ import { auth } from '../../../configs/firebase.config';
 import { closeModal } from '../../../store/slices/modal.slice';
 import ModalWrapper from '../../misc/modal/modal-wrapper.component';
 import AuthForm from '../auth-form/auth-form.component.jsx';
+import GoogleButton from '../google-button/google-button.component';
 
 const SignUpForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,15 +35,18 @@ const SignUpForm = () => {
     <ModalWrapper
       title="Get Started Today"
       footer={
-        <Button
-          form="registration-form"
-          htmlType="submit"
-          loading={isSubmitting}
-          className="btn-primary"
-          style={{ padding: '1rem 2rem', fontSize: 16, width: '100%' }}
-        >
-          Sign Up
-        </Button>
+        <>
+          <Button
+            form="registration-form"
+            htmlType="submit"
+            loading={isSubmitting}
+            className="btn-primary"
+            style={{ padding: '1rem 2rem', fontSize: 16, width: '100%' }}
+          >
+            Sign Up
+          </Button>
+          <GoogleButton />
+        </>
       }
     >
       <AuthForm handleSubmit={handleSubmit} formError={error} />

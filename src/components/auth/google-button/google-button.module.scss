@@ -1,0 +1,21 @@
+.box {
+  button {
+    padding: 1rem 2rem;
+    width: 100%;
+    font-size: 1.6rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #ccc;
+      background-color: #f1f2f3;
+    }
+  }
+}
+
+.icon {
+  position: relative;
+  bottom: 2px;
+  right: 6px;
+}

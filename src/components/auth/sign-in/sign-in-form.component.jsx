@@ -5,6 +5,7 @@ import { auth } from '../../../configs/firebase.config.js';
 import { closeModal } from '../../../store/slices/modal.slice.js';
 import ModalWrapper from '../../misc/modal/modal-wrapper.component';
 import AuthForm from '../auth-form/auth-form.component';
+import GoogleButton from '../google-button/google-button.component.jsx';
 
 const SignInForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,15 +32,18 @@ const SignInForm = () => {
     <ModalWrapper
       title="Welcome Back"
       footer={
-        <Button
-          form="registration-form"
-          htmlType="submit"
-          loading={isSubmitting}
-          className="btn-primary"
-          style={{ padding: '1rem 2rem', fontSize: 16, width: '100%' }}
-        >
-          Sign In
-        </Button>
+        <>
+          <Button
+            form="registration-form"
+            htmlType="submit"
+            loading={isSubmitting}
+            className="btn-primary"
+            style={{ padding: '1rem 2rem', fontSize: 16, width: '100%' }}
+          >
+            Sign In
+          </Button>
+          <GoogleButton />
+        </>
       }
     >
       <AuthForm handleSubmit={handleSubmit} formError={error} />
