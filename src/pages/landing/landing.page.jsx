@@ -11,7 +11,7 @@ const Landing = () => {
   return (
     <div className={styles.box}>
       <div className={styles.imageBox}>
-        <img src="/assets/img/landing.svg" alt="Company logo" />
+        <img src="/assets/img/landing.svg" alt="Company logo." />
       </div>
       <div className={styles.content}>
         <h1>Expense Tracker</h1>

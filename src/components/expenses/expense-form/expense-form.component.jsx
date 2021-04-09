@@ -1,7 +1,7 @@
 import { Button, Form, Space } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
+import { Redirect, useHistory, useLocation, useParams } from 'react-router-dom';
 import {
   FormDatePicker,
   FormNumberField,
@@ -17,6 +17,7 @@ import styles from './expense-form.module.scss';
 const ExpenseForm = () => {
   const history = useHistory();
   const params = useParams();
+  const { pathname } = useLocation();
   const expenses = useSelector(selectExpenses);
   const selectedExpenseIdx = expenses.findIndex((expense) => expense.id === params.id);
   const selectedExpense = expenses[selectedExpenseIdx];
@@ -42,6 +43,8 @@ const ExpenseForm = () => {
     history.push('/dashboard');
   };
 
+  if (pathname.includes('manage-expense') && selectedExpenseIdx < 0) return <Redirect to="/error" />;
+
   return (
     <div className="container-narrow">
       <div className={styles.box}>
@@ -52,7 +55,6 @@ const ExpenseForm = () => {
               name: 'description',
               rules: [{ required: true, message: 'Please provide a description.' }],
             }}
-            size="large"
             placeholder="Lunch"
           />
           <FormNumberField
@@ -61,7 +63,6 @@ const ExpenseForm = () => {
               name: 'amount',
               rules: [{ required: true, message: 'Please provide an amount.' }],
             }}
-            size="large"
             formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
             precision={2}
@@ -73,9 +74,7 @@ const ExpenseForm = () => {
               name: 'category',
               rules: [{ required: true, message: 'Please select a category.' }],
             }}
-            size="large"
             allowClear
-            showSearch
             options={categoryOptions.slice(1)}
             placeholder="Food"
           />
@@ -85,7 +84,6 @@ const ExpenseForm = () => {
               name: 'date',
               rules: [{ required: true, message: 'Please pick a date.' }],
             }}
-            size="large"
             format="MM-DD-YYYY"
             placeholder="03-22-2021"
           />
@@ -94,7 +92,6 @@ const ExpenseForm = () => {
               label: 'Note',
               name: 'note',
             }}
-            size="large"
             rows="3"
             placeholder="Chipotle (This field is optional...)"
           />
