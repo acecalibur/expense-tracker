@@ -3,7 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 85vh;
+}
+
+.imageBox {
+  width: 25rem;
+  height: auto;
+  margin-bottom: 5rem;
 }
 
 .textContent {
@@ -42,6 +48,6 @@
   }
 }
 
-.notFound {
+.landing {
   padding: 1.2rem 2.4rem;
 }

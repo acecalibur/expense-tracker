@@ -5,14 +5,16 @@ import styles from './not-found.module.scss';
 
 const NotFound = () => {
   return (
-    <div className={styles.box}>
-      <div className={styles.textContent}>
-        <strong>404</strong>
-        <span>The page you requested was not found.</span>
+    <div className="container">
+      <div className={styles.box}>
+        <div className={styles.textContent}>
+          <strong>404</strong>
+          <span>The page you requested was not found.</span>
+        </div>
+        <Link to="/dashboard" className={cn('btn-info', styles.notFound)}>
+          Go to Dashboard
+        </Link>
       </div>
-      <Link to="/dashboard" className={cn('btn-info', styles.notFound)}>
-        Go to Dashboard
-      </Link>
     </div>
   );
 };
