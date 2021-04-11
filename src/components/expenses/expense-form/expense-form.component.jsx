@@ -23,13 +23,7 @@ const ExpenseForm = () => {
   const selectedExpense = expenses[selectedExpenseIdx];
   const dispatch = useDispatch();
 
-  const initialValues = selectedExpense || {
-    description: '',
-    amount: '',
-    category: null,
-    date: '',
-    note: '',
-  };
+  const initialValues = selectedExpense || null;
 
   const handleSubmit = (values) => {
     selectedExpense

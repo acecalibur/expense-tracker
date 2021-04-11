@@ -21,33 +21,21 @@ function* handleStartSetExpenses() {
 }
 
 function* handleStartCreateExpense(action) {
-  try {
-    const { uid } = yield select(userSelector);
-    const docRef = yield call(createExpenseFs, uid, action.payload);
-    yield put(actions.createExpense({ id: docRef.id, ...action.payload }));
-  } catch (error) {
-    throw new Error(error);
-  }
+  const { uid } = yield select(userSelector);
+  const docRef = yield call(createExpenseFs, uid, action.payload);
+  yield put(actions.createExpense({ id: docRef.id, ...action.payload }));
 }
 
 function* handleStartUpdateExpense(action) {
-  try {
-    const { uid } = yield select(userSelector);
-    yield call(updateExpenseFs, uid, action.payload);
-    yield put(actions.updateExpense(action.payload));
-  } catch (error) {
-    throw new Error(error);
-  }
+  const { uid } = yield select(userSelector);
+  yield call(updateExpenseFs, uid, action.payload);
+  yield put(actions.updateExpense(action.payload));
 }
 
 function* handleStartDeleteExpense(action) {
-  try {
-    const { uid } = yield select(userSelector);
-    yield call(deleteExpenseFs, uid, action.payload);
-    yield put(actions.deleteExpense(action.payload));
-  } catch (error) {
-    throw new Error(error);
-  }
+  const { uid } = yield select(userSelector);
+  yield call(deleteExpenseFs, uid, action.payload);
+  yield put(actions.deleteExpense(action.payload));
 }
 
 // Watchers

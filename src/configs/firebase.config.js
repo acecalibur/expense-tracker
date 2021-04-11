@@ -12,6 +12,9 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+firebase.firestore().settings({
+  ignoreUndefinedProperties: true,
+});
 
 export const db = firebase.firestore();
 export const auth = firebase.auth();

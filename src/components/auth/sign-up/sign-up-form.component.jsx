@@ -13,7 +13,6 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async ({ email, password }) => {
-    console.log(email, password);
     setIsSubmitting(true);
     try {
       await auth.createUserWithEmailAndPassword(email, password);
@@ -24,7 +23,7 @@ const SignUpForm = () => {
       if (error.code === 'auth/weak-password') {
         setError({ type: error.code, msg: 'Password must be greater than six (6) characters in length.' });
       } else if (error.code === 'auth/email-already-in-use') {
-        setError({ type: error.code, msg: 'Email address is already in use. Please use another/try again.' });
+        setError({ type: error.code, msg: 'This email address is already being used.' });
       } else {
         setError({ msg: 'Problem signing up with email and/or password.' });
       }
