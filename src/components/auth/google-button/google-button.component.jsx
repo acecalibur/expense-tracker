@@ -16,7 +16,7 @@ const GoogleButton = () => {
 
   return (
     <div className={styles.box}>
-      <Divider>OR</Divider>
+      <Divider>or</Divider>
       <Button onClick={handleContinueWithGoogle} className="btn" icon={<FcGoogle size={22} className={styles.icon} />}>
         Continue with Google
       </Button>

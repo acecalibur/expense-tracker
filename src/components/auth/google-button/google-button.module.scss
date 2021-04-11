@@ -4,12 +4,14 @@
     width: 100%;
     font-size: 1.6rem;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #d0d0d0;
+    box-shadow: none;
 
     &:hover,
     &:focus {
-      border: 1px solid #ccc;
+      border: 1px solid #d0d0d0;
       background-color: #f1f2f3;
+      box-shadow: none;
     }
   }
 }
